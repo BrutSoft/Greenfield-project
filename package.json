@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/djdaquin/Greenfield-project-2016#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "jquery": "^3.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
