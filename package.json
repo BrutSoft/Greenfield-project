@@ -4,6 +4,7 @@
   "description": "Donation page for Operation Spark",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server/server.js",
     "test": "null"
   },
   "repository": {
@@ -22,5 +23,8 @@
     "jquery": "^3.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.2"
   }
 }

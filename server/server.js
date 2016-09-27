@@ -3,8 +3,10 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var PORT = proccess.env.PORT || '5000'
+var PORT = process.env.PORT || '3000';
+
+app.use(express.static('public'));
 
 app.listen(PORT, function() {
-  console.log("Listening on port " + PORT);
-})
+  console.log('Listening on port ' + PORT);
+});
