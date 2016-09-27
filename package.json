@@ -25,6 +25,7 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
+    "jshint-loader": "^0.8.3",
     "morgan": "^1.7.0",
     "nodemon": "^1.10.2"
   }
