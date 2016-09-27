@@ -1,0 +1,24 @@
+{
+  "name": "opsk_donation_page",
+  "version": "1.0.0",
+  "description": "Donation page for Operation Spark",
+  "main": "server.js",
+  "scripts": {
+    "test": "null"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djdaquin/Greenfield-project-2016.git"
+  },
+  "author": "BrutSoft",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djdaquin/Greenfield-project-2016/issues"
+  },
+  "homepage": "https://github.com/djdaquin/Greenfield-project-2016#readme",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  }
+}
