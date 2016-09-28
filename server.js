@@ -14,13 +14,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-// Database set up ================================
-
-var db = require('./database.js');
-
-// End Database Set up ============================
-
-
 // Hey! Listen! Hey!
 app.listen(PORT, function() {
   console.log('Listening on port ' + PORT);
