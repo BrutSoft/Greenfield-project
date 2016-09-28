@@ -14,7 +14,6 @@ class HelloWorld extends React.Component {
       </div> 
     );
   }
-
 }
 
 ReactDOM.render(<HelloWorld />, app);
