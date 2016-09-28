@@ -27,6 +27,8 @@
   "devDependencies": {
     "jshint-loader": "^0.8.3",
     "morgan": "^1.7.0",
-    "nodemon": "^1.10.2"
+    "nodemon": "^1.10.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
   }
 }
