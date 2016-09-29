@@ -7,6 +7,10 @@ import Register from './components/navbar/Register.jsx';
 import Logout from './components/navbar/Logout.jsx';
 import Admin from './components/navbar/Admin.jsx';
 
+import firebase from 'firebase';
+import config from '../firebase.config.js';
+firebase.initializeApp(config);
+
 console.log('hello from react');
 
 class App extends React.Component {
