@@ -1,17 +1,17 @@
 import React from 'react';
-import { ReactRouter, Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
-import Home from '../Home.jsx';
-import Main from '../Main.jsx';
-import Login from '../components/navbar/Login.jsx';
-import Register from '../components/navbar/Register.jsx';
-import Logout from '../components/navbar/Logout.jsx';
-import DonationPage from '../components/Donation-Page.jsx';
-import requireAuth from '../util/auth.jsx';
+import Home from '../Home';
+import Main from '../Main';
+import Login from '../components/navbar/Login';
+import Register from '../components/navbar/Register';
+import Logout from '../components/navbar/Logout';
+import DonationPage from '../components/Donation-Page';
+import requireAuth from '../util/auth';
 
-var routes = (
+const routes = (
   <Router history={hashHistory}>
-    <Route path='/' component={Main}>
+    <Route path="/" component={Main}>
       <IndexRoute component={Home} />
       <Route path="login" component={Login} />
       <Route path="logout" component={Logout} />

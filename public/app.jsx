@@ -1,23 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes/routes';
-import List from './List';
 
-console.log('hello from react');
-
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <List tiers={this.props.tiers} />
-    );
-  }
-
-}
+ReactDOM.render(routes, document.getElementById('app'))
 
 const tiers = [
   {
@@ -31,5 +16,3 @@ const tiers = [
     description: 'You get a shirt!',
   },
 ];
-
-ReactDOM.render(<App tiers={tiers} />, document.getElementById('app'));
