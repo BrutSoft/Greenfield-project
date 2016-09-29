@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
-import Home from '../Home';
-import Main from '../Main';
+import Home from '../components/Home';
+import Main from '../components/Main';
 import Login from '../components/navbar/Login';
 import Register from '../components/navbar/Register';
 import Logout from '../components/navbar/Logout';
