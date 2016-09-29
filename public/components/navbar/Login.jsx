@@ -23,9 +23,9 @@ var Login = React.createClass({
             } else {
                 self.context.router.replace('/')
             }
-            // User signed in!
+            
             console.log('User signed in!');
-            // var uid = result.user.uid;
+        
         }).catch(function(error) {
             this.setState({error: error});
         });
