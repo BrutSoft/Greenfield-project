@@ -7,9 +7,6 @@ class HelloWorld extends React.Component {
 
   render() {
     console.log('Hello from Render');
-    if (this.props) {
-      return null;
-    }
     return (
       <h1>Hello World(REACT)</h1>
     );
