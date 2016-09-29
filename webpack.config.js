@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = {
   context: __dirname,
   devtool: debug ? 'inline-sourcemap' : null,
-  entry: path.resolve(__dirname, 'public/main.js'),
+  entry: path.resolve(__dirname, 'public/App.jsx'),
   output: {
     path: path.resolve(__dirname, 'public/dist/'),
     filename: 'bundle.js',

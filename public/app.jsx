@@ -1,17 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import routes from './routes/routes';
 
-console.log('hello from react');
-
-class HelloWorld extends React.Component {
-
-  render() {
-    console.log('Hello from Render');
-    return (
-      <h1>Hello World(REACT)</h1>
-    );
-  }
-
-}
-
-ReactDOM.render(<HelloWorld />, app);
+ReactDOM.render(routes , app);
