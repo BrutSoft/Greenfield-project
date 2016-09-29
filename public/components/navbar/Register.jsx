@@ -15,10 +15,6 @@ var Register = React.createClass({
     var email = this.refs.email.value;
     var pw = this.refs.pw.value;
 
-<<<<<<< HEAD
-=======
-    // Add signup event
->>>>>>> added donation page, finished skeleton for the login, register
     firebase.auth().createUserWithEmailAndPassword( email, pw )
     .then( this.context.router.replace('/') )
     .catch( this.setState({error: e.message}) );

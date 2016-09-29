@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Link } from 'react-router';
 import firebase from 'firebase';
 
-var Navbar = React.createClass({
+var Main = React.createClass({
     getInitialState: function() {
         return {
             loggedIn: (null !== firebase.auth().currentUser)
@@ -75,4 +75,4 @@ var Navbar = React.createClass({
     }
 });
 
-module.exports = Navbar;
+module.exports = Main;

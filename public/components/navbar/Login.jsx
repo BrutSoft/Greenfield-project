@@ -21,11 +21,11 @@ var Login = React.createClass({
             if (location.state && location.state.nextPathname) {
                 self.context.router.replace(location.state.nextPathname)
             } else {
-                self.context.router.replace('/')
+                self.context.router.replace('/dashboard')
             }
-            
+            // User signed in!
             console.log('User signed in!');
-        
+            // var uid = result.user.uid;
         }).catch(function(error) {
             this.setState({error: error});
         });
