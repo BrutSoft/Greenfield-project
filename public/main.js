@@ -5,3 +5,6 @@ import Admin from './components/navbar/Admin.jsx';
 import Login from './components/navbar/Login.jsx';
 import Logout from './components/navbar/Logout.jsx';
 import Register from './components/navbar/Register.jsx';
+import DonationPage from './components/Donation-Page.jsx';
+import requireAuth from './util/auth.jsx';
+import config from '../firebase.config.js';

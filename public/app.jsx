@@ -5,15 +5,12 @@ import Layout from './components/Layout.jsx';
 import Login from './components/navbar/Login.jsx';
 import Register from './components/navbar/Register.jsx';
 import Logout from './components/navbar/Logout.jsx';
-import Admin from './components/navbar/Admin.jsx';
-
-import firebase from 'firebase';
-import config from '../firebase.config.js';
-firebase.initializeApp(config);
+import DonationPage from './components/Donation-Page.jsx';
+import requireAuth from './util/auth.jsx';
 
 console.log('hello from react');
 
-class App extends React.Component {
+var App = React.createClass({
 
   render() {
     console.log('Hello from Render');
@@ -21,14 +18,18 @@ class App extends React.Component {
       <Router history={hashHistory}>
         <Route path='/' component={Layout}>
           <IndexRoute component={Layout} />
-          <Route path='login' component={Login} />
-          <Route path='register' component={Register} />
-          <Route path='logout' component={Logout} />
-          <Route path='admin' component={Admin} />
+          <Route path="login" component={Login} />
+          <Route path="logout" component={Logout} />
+          <Route path="register" component={Register} />
+          <Route path="donation-page" component={DonationPage} onEnter={requireAuth} />
         </Route>
       </Router>
     );
   }
+<<<<<<< HEAD
 }
+=======
+});
+>>>>>>> added donation page, finished skeleton for the login, register
 
 ReactDOM.render(<App />, app);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './navbar/Navbar.jsx';
 
-export default class Layout extends React.Component {
+var Layout = React.createClass({
   render () {
     return (
       <div>
@@ -9,4 +9,6 @@ export default class Layout extends React.Component {
       </div>
     );
   }
-};
+});
+
+module.exports = Layout;
