@@ -1,19 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ReactRouter, Router, Route, hashHistory, IndexRoute } from 'react-router';
 import Layout from './components/Layout.jsx';
+import Login from './components/navbar/Login.jsx';
+import Register from './components/navbar/Register.jsx';
+import Logout from './components/navbar/Logout.jsx';
+import Admin from './components/navbar/Admin.jsx';
+
 console.log('hello from react');
 
-class HelloWorld extends React.Component {
+class App extends React.Component {
 
   render() {
     console.log('Hello from Render');
     return (
-      <div>
-        <h1>Hello World(REACT)</h1>
-        <Layout />
-      </div> 
+      <Router history={hashHistory}>
+        <Route path='/' component={Layout}>
+          <IndexRoute component={Layout} />
+          <Route path='login' component={Login} />
+          <Route path='register' component={Register} />
+          <Route path='logout' component={Logout} />
+          <Route path='admin' component={Admin} />
+        </Route>
+      </Router>
     );
   }
 }
 
-ReactDOM.render(<HelloWorld />, app);
+ReactDOM.render(<App />, app);
