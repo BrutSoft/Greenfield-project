@@ -1,10 +1,10 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
-var app = express();
+const app = express();
 
-var PORT = process.env.PORT || '3000';
+const PORT = process.env.PORT || '3000';
 
 // Middleware setup
 app.use(morgan('dev'));

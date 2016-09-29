@@ -6,8 +6,9 @@ module.exports = {
     },
     "extends": "airbnb",
     "rules": {
-      //  "indent": [1, "tab"],
        "no-console": 0,
+       "no-unused-vars": ["error", { "vars": "local", "args": "after-used" }],
+       "import/no-unresolved": [2, { ignore: ['\.jsx?$'] }]
    },
     "plugins": [
         "react",
