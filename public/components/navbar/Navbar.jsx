@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Link } from 'react-router';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 
 var Navbar = React.createClass({
   getInitialState() {
