@@ -12,23 +12,21 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['eslint'],
-        include: path.join(__dirname, '/public/'),
-      },
-    ],
     loaders: [
       {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-        },
+        loader: 'react-hot!babel',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader', 'eslint-loader'],
       },
     ],
+  },
+  eslint: {
+    configFile: './.eslintrc',
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
