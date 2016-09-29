@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes/routes';
+import List from './List';
 
 console.log('hello from react');
 
 class App extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    console.log('Hello from Render');
     return (
-      <h1>{this.props.message}</h1>
+      <List tiers={this.props.tiers} />
     );
   }
 

@@ -5,7 +5,7 @@ const List = (props) => (
   <div>
     <h2>Donation Tiers</h2>
     <ul>
-      {props.tiers.map(listItem =>
+      {props.tiers.map(tier =>
         <ListItem tier={tier} />
       )}
     </ul>
