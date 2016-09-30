@@ -20,10 +20,10 @@ class ListItem extends React.Component {
 
   render() {
     return (
-      <li class="tier" onClick={() => this.activate()}>
-        <div class="tier-name">{this.props.tier.name}</div>
-        <div class="tier-amount">Amount: {this.props.tier.amount}</div>
-        <div class="tier-description">{this.state.description}</div>
+      <li className="tier" onClick={() => this.activate()}>
+        <div className="tier-name">{this.props.tier.name}</div>
+        <div className="tier-amount">Amount: {this.props.tier.amount}</div>
+        <div className="tier-description">{this.state.description}</div>
       </li>
     );
   }
