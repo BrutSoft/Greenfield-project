@@ -6,8 +6,8 @@ import Main from '../components/Main';
 import Login from '../components/navbar/Login';
 import Register from '../components/navbar/Register';
 import Logout from '../components/navbar/Logout';
-import DonationPage from '../components/Donation-Page';
-import requireAuth from '../util/auth';
+// import DonationPage from '../components/Donation-Page';
+// import requireAuth from '../util/auth';
 import paymentForm from '../components/paymentForm/paymentForm';
 
 const routes = (
