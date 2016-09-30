@@ -14,19 +14,10 @@ const tiers = [
   },
 ];
 
-class Home extends React.Component {
+const Home = () => (
+  <List tiers={tiers} />
+);
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <List tiers={tiers} />
-    );
-  }
-
-}
 
 // var Home = React.createClass({
 //   render: function() {
