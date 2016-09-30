@@ -8,6 +8,7 @@ import Register from '../components/navbar/Register';
 import Logout from '../components/navbar/Logout';
 import DonationPage from '../components/Donation-Page';
 import requireAuth from '../util/auth';
+import paymentForm from '../components/paymentForm/paymentForm';
 
 const routes = (
   <Router history={hashHistory}>
