@@ -12,11 +12,11 @@ Stripe api is used for a secure donation/transaction.
 
   - __Product Owner__: Nathan Donolli
   - __Scrum Master__: Zivile Januleviciute
-  - __Development Team Members__: David d'Aquin
+  - __Development__: David d'Aquin
 
 ## Requirements
 
-- Node 0.10.x
+- Node 6.6.0
 
 ### Installing Dependencies
 
