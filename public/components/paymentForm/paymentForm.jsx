@@ -3,7 +3,7 @@ import React from 'react';
 const PaymentForm = React.createClass({
 
   getInitialState() {
-    let init = { showSticker: false, showShirt: false, showAddressField: false };
+    let init = { showSticker: false, showShirt: false, showAddressField: false, buttonDisabled: false };
     // if (this.refs.amount.value >= 10) init.showSticker = true;
     // if (this.refs.amount.value >= 30) init.showShirt = true;
     // TODO change this to work with the passed in prop instead
@@ -38,9 +38,22 @@ const PaymentForm = React.createClass({
     }
   },
 
+  handleSubmit() {
+    console.log('submit');
+    this.setState({buttonDisabled: true}); //disables button so multiple charges
+                                           // cannot be accidentally created
+    let card = {
+      number: this.refs.number,
+      exp_month: this.refs.exp_month,
+      exp_year: this.refs.exp_year
+    }
+
+    this.handleStripe(card, this.refs.amount);
+  },
+
   render() {
     return (
-      <form action="/your-charge-code" method="POST" id="payment-form">
+      <form id="payment-form">
         <span className="payment-errors" />
 
         <div className="form-row">
@@ -53,17 +66,17 @@ const PaymentForm = React.createClass({
         <div className="form-row">
           <label htmlFor>
             <span>Card Number</span>
-            <input type="text" size="20" data-stripe="number" />
+            <input type="text" size="20" ref="number" />
           </label>
         </div>
 
         <div className="form-row">
           <label htmlFor>
             <span>Expiration (MM/YY)</span>
-            <input type="text" size="2" data-stripe="exp_month" />
+            <input type="text" size="2" ref="exp_month" />
           </label>
           <span> / </span>
-          <input type="text" size="2" data-stripe="exp_year" />
+          <input type="text" size="2" ref="exp_year" />
         </div>
 
         <div className="form-row">
@@ -144,7 +157,11 @@ const PaymentForm = React.createClass({
               </label>
             </div>
           </div> : null }
-        <input type="submit" className="submit" value="Submit Payment" />
+        <input type="submit"
+          className="submit"
+          value="Submit Payment"
+          disabled={this.state.buttonDisabled}
+          onClick={this.handleSubmit} />
       </form>
     );
   },
