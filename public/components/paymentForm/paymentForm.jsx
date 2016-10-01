@@ -1,15 +1,20 @@
 import React from 'react';
 
-class PaymentForm extends React.Component {
+const PaymentForm = React.createClass({
 
-  constructor(props) {
-    super(props);
-    this.state = null;
-  }
+  getInitialState() {
+    let init = { showSticker: false, showShirt: false };
+    // if (this.refs.amount.value >= 10) init.showSticker = true;
+    // if (this.refs.amount.value >= 30) init.showShirt = true;
+    // TODO change this to work with the passed in prop instead
+    return init;
+  },
 
   handleAmountChange(e) {
     console.log(e.target.value);
-  }
+
+  },
+
   render() {
     return (
       <form action="/your-charge-code" method="POST" id="payment-form">
@@ -18,7 +23,7 @@ class PaymentForm extends React.Component {
         <div className="form-row">
           <label htmlFor>
             <span>Donation Amount</span>
-            <input type="text" size="8" onChange={this.handleAmountChange} />
+            <input type="number" size="8" refs="amount" onChange={this.handleAmountChange} />
           </label>
         </div>
 
@@ -93,7 +98,7 @@ class PaymentForm extends React.Component {
         <input type="submit" className="submit" value="Submit Payment" />
       </form>
     );
-  }
-}
+  },
+});
 
 module.exports = PaymentForm;
