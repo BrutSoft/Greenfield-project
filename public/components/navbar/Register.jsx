@@ -1,33 +1,37 @@
-import React, {Component} from 'react';
+import React from 'react';
 import firebase from 'firebase';
 
-var Register = React.createClass({
+const Register = React.createClass({
   contextTypes: {
-    router: React.PropTypes.object.isRequired
+    router: React.PropTypes.object.isRequired,
   },
   getInitialState: function(){
     return {
-      error: false
-    }
+      error: false,
+    };
   },
   handleSubmit: function(e){
     e.preventDefault();
-    var email = this.refs.email.value;
-    var pw = this.refs.pw.value;
+    const email = this.refs.email.value;
+    const pw = this.refs.pw.value;
 
-    firebase.auth().createUserWithEmailAndPassword( email, pw )
-    .then( this.context.router.replace('/') )
-    .catch( this.setState({error: e.message}) );
+    firebase.auth().createUserWithEmailAndPassword(email, pw)
+    .then(this.context.router.replace('/'))
+    .catch(this.setState({ error: e.message }));
+    firebase.database().ref('users/').push({
+      email: email,
+      password: pw,
+    });
   },
   render: function(){
-    var errors = this.state.error ? <p> {this.state.error} </p> : '';
+    const errors = this.state.error ? <p> {this.state.error} </p> : '';
     return (
       <div className="col-sm-6 col-sm-offset-3">
         <h1> Register </h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label> Email </label>
-            <input className="form-control" ref="email" placeholder="Email"/>
+            <input className="form-control" ref="email" placeholder="Email" />
           </div>
           <div className="form-group">
             <label>Password</label>
@@ -37,8 +41,8 @@ var Register = React.createClass({
           <button type="submit" className="btn btn-primary">Register</button>
         </form>
       </div>
-    )
-  }
+    );
+  },
 });
 
 module.exports = Register;
