@@ -6,4 +6,4 @@ export default class Admin extends React.Component {
       <a href={'/admin'}>Admin</a>
     );
   }
-};
+}
