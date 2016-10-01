@@ -17,7 +17,7 @@ const routes = (
       <Route path="login" component={Login} />
       <Route path="logout" component={Logout} />
       <Route path="register" component={Register} />
-      <Route path="donation-page" component={DonationPage} />
+      <Route path="donation-page" component={paymentForm} />
     </Route>
   </Router>
 );
