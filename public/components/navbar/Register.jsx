@@ -5,12 +5,12 @@ const Register = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired,
   },
-  getInitialState: function(){
+  getInitialState: function () {
     return {
       error: false,
     };
   },
-  handleSubmit: function(e){
+  handleSubmit: function (e) {
     e.preventDefault();
     const email = this.refs.email.value;
     const pw = this.refs.pw.value;
@@ -23,18 +23,18 @@ const Register = React.createClass({
       password: pw,
     });
   },
-  render: function(){
+  render: function () {
     const errors = this.state.error ? <p> {this.state.error} </p> : '';
     return (
       <div className="col-sm-6 col-sm-offset-3">
         <h1> Register </h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label> Email </label>
+            <label htmlFor="email"> Email </label>
             <input className="form-control" ref="email" placeholder="Email" />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input ref="pw" type="password" className="form-control" placeholder="Password" />
           </div>
           {errors}
