@@ -16,7 +16,7 @@ const Login = React.createClass({
     const pw = this.refs.pw.value;
     const self = this;
 
-    firebase.auth().signInWithEmailAndPassword(email, pw).then(function (result) {
+    firebase.auth().signInWithEmailAndPassword(email, pw).then(function () {
       const location = self.props.location;
       if (location.state && location.state.nextPathname) {
         self.context.router.replace(location.state.nextPathname);
