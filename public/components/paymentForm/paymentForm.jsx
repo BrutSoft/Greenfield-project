@@ -78,33 +78,35 @@ const PaymentForm = React.createClass({
           <input type="checkbox" value="signUpForEmailList" />
           <span>Would you like to sign up for our newsletter?</span>
         </div>
+        {this.state.showSticker ?
+          <div className="form-row">
+            <input type="checkbox" value="getSticker" />
+            <span>Would you like to receive an Operation Spark sticker?</span>
+            { // TODO this should not appear unless donation Amount
+              // is higher than $10(?)
+            }
+          </div>
+        : null }
 
-        <div className="form-row">
-          <input type="checkbox" value="getSticker" />
-          <span>Would you like to receive an Operation Spark sticker?</span>
-          { // TODO this should not appear unless donation Amount
-            // is higher than $10(?)
-          }
-        </div>
+        {this.state.showShirt ?
+          <div className="form-row">
+            <input type="checkbox" value="getShirt" />
+            <span>Would you like to receive an Operation Spark T-Shirt?</span>
+            <br />
+            <select name="shirtSize">
+              <option value="small">S</option>
+              <option value="medium">M</option>
+              <option value="large">L</option>
+              <option value="xlarge">XL</option>
+              <option value="xxlarge">XXL</option>
+            </select>
+            <span>Shirt Size</span>
 
-        <div className="form-row">
-          <input type="checkbox" value="getShirt" />
-          <span>Would you like to receive an Operation Spark T-Shirt?</span>
-          <br />
-          <select name="shirtSize">
-            <option value="small">S</option>
-            <option value="medium">M</option>
-            <option value="large">L</option>
-            <option value="xlarge">XL</option>
-            <option value="xxlarge">XXL</option>
-          </select>
-          <span>Shirt Size</span>
-
-          { // TODO this should not appear unless donation Amount
-            // is higher than $30(?)
-          }
-        </div>
-
+            { // TODO this should not appear unless donation Amount
+              // is higher than $30(?)
+            }
+          </div>
+        : null }
         <input type="submit" className="submit" value="Submit Payment" />
       </form>
     );
