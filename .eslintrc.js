@@ -4,7 +4,7 @@ module.exports = {
         "browser": true,
         "node": true,
     },
-    "extends": "airbnb",
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "rules": {
        "no-console": 0,
        "no-unused-vars": ["error", { "vars": "local", "args": "after-used" }],
