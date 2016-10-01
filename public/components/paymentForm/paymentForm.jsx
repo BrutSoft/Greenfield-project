@@ -12,7 +12,17 @@ const PaymentForm = React.createClass({
 
   handleAmountChange(e) {
     console.log(e.target.value);
-
+    if (e.target.value >= 10) {
+      this.setState({showSticker: true});
+    } else {
+      this.setState({showSticker: false});
+    }
+    if (e.target.value >= 30) {
+      this.setState({showShirt: true});
+    } else {
+      this.setState({showShirt: false});
+    }
+    console.log(this.state);
   },
 
   render() {
