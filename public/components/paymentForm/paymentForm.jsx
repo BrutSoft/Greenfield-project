@@ -15,13 +15,14 @@ const PaymentForm = React.createClass({
     if (e.target.value >= 10) {
       this.setState({showSticker: true});
     } else {
-      this.setState({showSticker: false});
+      this.setState({showSticker: false, showAddressField: false});
     }
     if (e.target.value >= 30) {
       this.setState({showShirt: true});
     } else {
       this.setState({showShirt: false});
     }
+
     console.log(this.state);
   },
 
@@ -29,6 +30,12 @@ const PaymentForm = React.createClass({
     console.log('handleCheckBoxChange called');
     console.log(e.target.value);
     console.log(e.target.checked);
+    console.log(this.refs.getSticker.checked);
+    if (this.refs.getSticker.checked || this.refs.getShirt.checked){
+      this.setState({showAddressField: true})
+    } else {
+      this.setState({showAddressField: false});
+    }
   },
 
   render() {
@@ -39,7 +46,7 @@ const PaymentForm = React.createClass({
         <div className="form-row">
           <label htmlFor>
             <span>Donation Amount</span>
-            <input type="number" size="8" refs="amount" onChange={this.handleAmountChange} />
+            <input type="number" size="8" ref="amount" onChange={this.handleAmountChange} />
           </label>
         </div>
 
@@ -86,7 +93,7 @@ const PaymentForm = React.createClass({
         </div>
         {this.state.showSticker ?
           <div className="form-row">
-            <input type="checkbox" value="getSticker" onChange={this.handleCheckBoxChange} />
+            <input type="checkbox" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
             <span>Would you like to receive an Operation Spark sticker?</span>
             { // TODO this should not appear unless donation Amount
               // is higher than $10(?)
@@ -96,7 +103,7 @@ const PaymentForm = React.createClass({
 
         {this.state.showShirt ?
           <div className="form-row">
-            <input type="checkbox" value="getShirt" onChange={this.handleCheckBoxChange} />
+            <input type="checkbox" value="getShirt" ref="getShirt" onChange={this.handleCheckBoxChange} />
             <span>Would you like to receive an Operation Spark T-Shirt?</span>
             <br />
             <select name="shirtSize">
@@ -113,6 +120,37 @@ const PaymentForm = React.createClass({
             }
           </div>
         : null }
+
+        {this.state.showAddressField ?
+          <div className="shippingInfo">
+            <h3>Shipping Information</h3>
+            <div className="form-row">
+              <label htmlFor>
+                <span>Name</span>
+                <input type="text" size="30" id="name" />
+              </label>
+            </div>
+            <div className="form-row">
+              <label htmlFor>
+                <span>Street Address</span>
+                <input type="text" size="30" id="streetAddress" />
+              </label>
+            </div>
+            <div className="form-row">
+              <label htmlFor>
+                <span>City/State</span>
+                <input type="text" size="20" id="city" />
+                <span> , </span>
+                <input type="text" size="2" id="state" />
+              </label>
+            </div>
+            <div className="form-row">
+              <label htmlFor>
+                <span>Zip Code</span>
+                <input type="text" size="5" id="zip" />
+              </label>
+            </div>
+          </div> : null }
         <input type="submit" className="submit" value="Submit Payment" />
       </form>
     );
