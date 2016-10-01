@@ -7,8 +7,8 @@ class PaymentForm extends React.Component {
     this.state = null;
   }
 
-  handleAmountChange() {
-    console.log('hello');
+  handleAmountChange(e) {
+    console.log(e.target.value);
   }
   render() {
     return (
