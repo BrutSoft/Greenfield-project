@@ -3,7 +3,7 @@ import React from 'react';
 const PaymentForm = React.createClass({
 
   getInitialState() {
-    let init = { showSticker: false, showShirt: false };
+    let init = { showSticker: false, showShirt: false, showAddressField: false };
     // if (this.refs.amount.value >= 10) init.showSticker = true;
     // if (this.refs.amount.value >= 30) init.showShirt = true;
     // TODO change this to work with the passed in prop instead
@@ -23,6 +23,12 @@ const PaymentForm = React.createClass({
       this.setState({showShirt: false});
     }
     console.log(this.state);
+  },
+
+  handleCheckBoxChange(e) {
+    console.log('handleCheckBoxChange called');
+    console.log(e.target.value);
+    console.log(e.target.checked);
   },
 
   render() {
@@ -80,7 +86,7 @@ const PaymentForm = React.createClass({
         </div>
         {this.state.showSticker ?
           <div className="form-row">
-            <input type="checkbox" value="getSticker" />
+            <input type="checkbox" value="getSticker" onChange={this.handleCheckBoxChange} />
             <span>Would you like to receive an Operation Spark sticker?</span>
             { // TODO this should not appear unless donation Amount
               // is higher than $10(?)
@@ -90,7 +96,7 @@ const PaymentForm = React.createClass({
 
         {this.state.showShirt ?
           <div className="form-row">
-            <input type="checkbox" value="getShirt" />
+            <input type="checkbox" value="getShirt" onChange={this.handleCheckBoxChange} />
             <span>Would you like to receive an Operation Spark T-Shirt?</span>
             <br />
             <select name="shirtSize">
