@@ -95,9 +95,6 @@ const PaymentForm = React.createClass({
           <div className="form-row">
             <input type="checkbox" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
             <span>Would you like to receive an Operation Spark sticker?</span>
-            { // TODO this should not appear unless donation Amount
-              // is higher than $10(?)
-            }
           </div>
         : null }
 
@@ -114,10 +111,6 @@ const PaymentForm = React.createClass({
               <option value="xxlarge">XXL</option>
             </select>
             <span>Shirt Size</span>
-
-            { // TODO this should not appear unless donation Amount
-              // is higher than $30(?)
-            }
           </div>
         : null }
 
