@@ -6,6 +6,10 @@ class PaymentForm extends React.Component {
     super(props);
     this.state = null;
   }
+
+  handleAmountChange() {
+    console.log('hello');
+  }
   render() {
     return (
       <form action="/your-charge-code" method="POST" id="payment-form">
@@ -14,7 +18,7 @@ class PaymentForm extends React.Component {
         <div className="form-row">
           <label htmlFor>
             <span>Donation Amount</span>
-            <input type="text" size="8" />
+            <input type="text" size="8" onChange={this.handleAmountChange} />
           </label>
         </div>
 
