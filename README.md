@@ -5,6 +5,7 @@
 It is a donation web-page for a non-profit coding school 'Operation Spark' in New Orleans.
 The interface is very simple: the main page informs about the donation tiers and after choosing one, person
 is redirected to the donation page. Person has an option to skip the main page and go straight to the donation page.
+\n
 This web-app is written in JavaScript. The UI is built with React.
 For backend we use Node and Express.
 Firebase is used for authentication, database and deployment.
