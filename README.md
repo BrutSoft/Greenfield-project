@@ -20,8 +20,6 @@ Stripe api is used for a secure donation/transaction.
 
 - Node 6.6.0
 
-## Requirements
-
 ### Installing Dependencies
 
 From within the root directory:
