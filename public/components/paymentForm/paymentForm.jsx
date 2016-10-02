@@ -1,4 +1,7 @@
 import React from 'react';
+import $ from 'jquery';
+
+const currentURL = 'http://127.0.0.1:8080'
 
 const PaymentForm = React.createClass({
 
@@ -38,17 +41,50 @@ const PaymentForm = React.createClass({
     }
   },
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault;
     console.log('submit');
-    this.setState({buttonDisabled: true}); //disables button so multiple charges
+    //Stop function and throw error if there is a problem with the form.
+    if (!this.validateForm()) {return;} //handle error if validateForm return false.
+
+    //this.setState({buttonDisabled: true}); //disables button so multiple charges
                                            // cannot be accidentally created
     let card = {
-      number: this.refs.number,
-      exp_month: this.refs.exp_month,
-      exp_year: this.refs.exp_year
+      number: this.refs.number.value,
+      exp_month: this.refs.exp_month.value,
+      exp_year: this.refs.exp_year.value
     }
+    this.handleStripe(card, this.refs.amount * 100);
+  },
 
-    this.handleStripe(card, this.refs.amount);
+  handleStripe(card, amount) {
+    console.log(card);
+    Stripe.card.createToken(card, function (status, response) {
+      if (response.error) { //uh oh, there is an error
+        this.setState({buttonDisabled: false}); //Let's try again...
+        //TODO publish the error somewhere on the page
+        //in the meantime
+        console.error(status, response);
+      } else {//Token was created. whoop whoop.
+        //submit the post request for the payment.
+        let options = {
+          type: 'POST',
+          data: {
+            amount: amount,
+            token: card
+          },
+          url: currentURL + '/payment',
+          success: function () {console.log('success!'); }
+        };
+        console.log('right before ajax');
+        $.ajax(options);
+      }
+    })
+  },
+
+  validateForm() {
+    //TODO have checks that return false if they aren't accurate.
+    return true;
   },
 
   render() {
@@ -157,7 +193,7 @@ const PaymentForm = React.createClass({
               </label>
             </div>
           </div> : null }
-        <input type="submit"
+        <input type="button"
           className="submit"
           value="Submit Payment"
           disabled={this.state.buttonDisabled}
