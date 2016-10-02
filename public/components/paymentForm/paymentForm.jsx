@@ -1,9 +1,12 @@
 import React from 'react';
+import $ from 'jquery';
+
+const currentURL = 'http://127.0.0.1:3000'
 
 const PaymentForm = React.createClass({
 
   getInitialState() {
-    let init = { showSticker: false, showShirt: false, showAddressField: false };
+    let init = { showSticker: false, showShirt: false, showAddressField: false, buttonDisabled: false };
     // if (this.refs.amount.value >= 10) init.showSticker = true;
     // if (this.refs.amount.value >= 30) init.showShirt = true;
     // TODO change this to work with the passed in prop instead
@@ -38,9 +41,55 @@ const PaymentForm = React.createClass({
     }
   },
 
+  handleSubmit(e) {
+    e.preventDefault;
+    console.log('submit');
+    //Stop function and throw error if there is a problem with the form.
+    if (!this.validateForm()) {return;} //handle error if validateForm return false.
+
+    //this.setState({buttonDisabled: true}); //disables button so multiple charges
+                                           // cannot be accidentally created
+    let card = {
+      number: this.refs.number.value,
+      exp_month: this.refs.exp_month.value,
+      exp_year: this.refs.exp_year.value
+    }
+    this.handleStripe(card, this.refs.amount.value * 100);
+  },
+
+  handleStripe(card, amount) {
+    console.log(card);
+    Stripe.card.createToken(card, function (status, response) {
+      if (response.error) { //uh oh, there is an error
+        this.setState({buttonDisabled: false}); //Let's try again...
+        //TODO publish the error somewhere on the page
+        //in the meantime
+        console.error(status, response);
+      } else {//Token was created. whoop whoop.
+        //submit the post request for the payment.
+        let options = {
+          type: 'POST',
+          data: {
+            amount: amount,
+            token: response.id
+          },
+          url: currentURL + '/payment',
+          success: function () {console.log('success!'); }
+        };
+        console.log('right before ajax', options);
+        $.ajax(options);
+      }
+    })
+  },
+
+  validateForm() {
+    //TODO have checks that return false if they aren't accurate.
+    return true;
+  },
+
   render() {
     return (
-      <form action="/your-charge-code" method="POST" id="payment-form">
+      <form id="payment-form">
         <span className="payment-errors" />
 
         <div className="form-row">
@@ -53,17 +102,17 @@ const PaymentForm = React.createClass({
         <div className="form-row">
           <label htmlFor>
             <span>Card Number</span>
-            <input type="text" size="20" data-stripe="number" />
+            <input type="text" size="20" ref="number" />
           </label>
         </div>
 
         <div className="form-row">
           <label htmlFor>
             <span>Expiration (MM/YY)</span>
-            <input type="text" size="2" data-stripe="exp_month" />
+            <input type="text" size="2" ref="exp_month" />
           </label>
           <span> / </span>
-          <input type="text" size="2" data-stripe="exp_year" />
+          <input type="text" size="2" ref="exp_year" />
         </div>
 
         <div className="form-row">
@@ -95,9 +144,6 @@ const PaymentForm = React.createClass({
           <div className="form-row">
             <input type="checkbox" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
             <span>Would you like to receive an Operation Spark sticker?</span>
-            { // TODO this should not appear unless donation Amount
-              // is higher than $10(?)
-            }
           </div>
         : null }
 
@@ -114,10 +160,6 @@ const PaymentForm = React.createClass({
               <option value="xxlarge">XXL</option>
             </select>
             <span>Shirt Size</span>
-
-            { // TODO this should not appear unless donation Amount
-              // is higher than $30(?)
-            }
           </div>
         : null }
 
@@ -151,7 +193,11 @@ const PaymentForm = React.createClass({
               </label>
             </div>
           </div> : null }
-        <input type="submit" className="submit" value="Submit Payment" />
+        <input type="button"
+          className="submit"
+          value="Submit Payment"
+          disabled={this.state.buttonDisabled}
+          onClick={this.handleSubmit} />
       </form>
     );
   },
