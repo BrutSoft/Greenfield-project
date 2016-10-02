@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-const currentURL = 'http://127.0.0.1:8080'
+const currentURL = 'http://127.0.0.1:3000'
 
 const PaymentForm = React.createClass({
 
