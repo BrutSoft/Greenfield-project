@@ -54,7 +54,7 @@ const PaymentForm = React.createClass({
       exp_month: this.refs.exp_month.value,
       exp_year: this.refs.exp_year.value
     }
-    this.handleStripe(card, this.refs.amount * 100);
+    this.handleStripe(card, this.refs.amount.value * 100);
   },
 
   handleStripe(card, amount) {
@@ -71,12 +71,12 @@ const PaymentForm = React.createClass({
           type: 'POST',
           data: {
             amount: amount,
-            token: card
+            token: response.id
           },
           url: currentURL + '/payment',
           success: function () {console.log('success!'); }
         };
-        console.log('right before ajax');
+        console.log('right before ajax', options);
         $.ajax(options);
       }
     })
