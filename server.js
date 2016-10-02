@@ -13,7 +13,9 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-
+app.post('/payment', function (res, req) {
+  console.log('hahaha made it here you butts!');
+});
 // Hey! Listen! Hey!
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
