@@ -43,8 +43,10 @@ app.post('/payment', function (req, res) {
     if (err && err.type === 'StripeCardError') {
     // The card has been declined
       console.error(err);
+      res.send(err);
     } else {
       console.log('GREAT SUCCESS', charge);
+      res.status(201).send();
       //Send Emails
       var message = 'Hi Brutsoft, we just received a donation of $' +
         charge.amount / 100;
