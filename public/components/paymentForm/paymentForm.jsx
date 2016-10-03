@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import firebase from 'firebase';
 
-const currentURL = 'http://127.0.0.1:3000'
+const currentURL = 'https://donation-page-b130d.firebaseapp.com'
 
 const PaymentForm = React.createClass({
 
