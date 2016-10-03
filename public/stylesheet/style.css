@@ -64,10 +64,15 @@ form {
 
 .home-header {
   position: relative;
+  padding: 15px;
 }
 
 .home-header h2, p {
   font-family: Tahoma, Geneva, sans-serif;
   color: #EEEEEE;
   text-align: left;
+}
+
+.white {
+  color: white;
 }
