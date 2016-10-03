@@ -155,31 +155,31 @@ const PaymentForm = React.createClass({
         <div className="form-group row">
           <label htmlFor="cardNumber" className="col-xs-5 col-form-label">Card Number</label>
           <div className="col-xs-6">
-            <input type="text" className="form-control" ref="number" placeholder="XXXX-XXXX-XXXX-XXXX" />
+            <input type="text" className="form-control" ref="number" maxLength="16" placeholder="XXXX-XXXX-XXXX-XXXX" />
           </div>
         </div>
 
         <div className="form-group row">
           <label htmlFor="expiration" className="col-xs-5 col-form-label">Expiration</label>
           <div className="col-xs-3">
-            <input type="text" className="form-control" ref="exp_month" placeholder="Month" />
+            <input type="text" className="form-control" ref="exp_month" maxLength="2" placeholder="Month" />
           </div>
           <div className="col-xs-3">
-            <input type="text" className="form-control" ref="exp_year" placeholder="Year" />
+            <input type="text" className="form-control" ref="exp_year" maxLength="2" placeholder="Year" />
           </div>
         </div>
 
         <div className="form-group row">
           <label htmlFor="cvc" className="col-xs-5 col-form-label">CVC</label>
           <div className="col-xs-6">
-            <input type="text" className="form-control" placeholder="XXX" data-stripe="cvc" />
+            <input type="text" className="form-control" placeholder="XXX" maxLength="4" data-stripe="cvc" />
           </div>
         </div>
 
         <div className="form-group row">
           <label htmlFor="billigZip" className="col-xs-5 col-form-label">Billing Zip</label>
           <div className="col-xs-6">
-            <input type="text" className="form-control" placeholder="XXXXX" data-stripe="address_zip" />
+            <input type="text" className="form-control" placeholder="XXXXX" maxLength="5" data-stripe="address_zip" />
           </div>
         </div>
 
