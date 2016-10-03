@@ -1,7 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const stripe = require ('stripe')('sk_test_iVtKJqVJanL4FTCV5GbkFL5g');
+const stripeKey = require('./stripe.config.js');
+const stripe = require ('stripe')(stripeKey);
+
+// Nodegun/Email setup ============================
+const nodemailer = require('nodemailer');
+const mg = require('nodemailer-mailgun-transport');
+const mgAPIkey = require('./mailgun.config.js');
+
+const mgAuth = {
+  auth: {
+    api_key: mgAPIkey,
+    domain: 'sandbox4b6bb820be194dcba1386b97280458fc.mailgun.org'
+  }
+};
+
+const nodemailerMailgun = nodemailer.createTransport(mg(mgAuth));
+
+// ================================================
 
 const app = express();
 
@@ -26,11 +43,29 @@ app.post('/payment', function (req, res) {
     if (err && err.type === 'StripeCardError') {
     // The card has been declined
       console.error(err);
+      res.send(err);
     } else {
       console.log('GREAT SUCCESS', charge);
+      res.status(201).send();
+      //Send Emails
+      var message = 'Hi Brutsoft, we just received a donation of $' +
+        charge.amount / 100;
+      var emailOptions = {
+        from: 'brutsoftNOLA@gmail.com',
+        to: 'brutsoftNOLA@gmail.com',
+        subject: 'Donation Received',
+        text: message
+      };
+      nodemailerMailgun.sendMail(emailOptions, function (err, info) {
+        if (err) {console.error(err);}
+        else {console.log('Email sent! ', info);}
+      });
     }
   });
 });
+
+
+
 // Hey! Listen! Hey!
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
