@@ -49,6 +49,7 @@ const PaymentForm = React.createClass({
 
     //this.setState({buttonDisabled: true}); //disables button so multiple charges
                                            // cannot be accidentally created
+    this.handleSwag(); // Send emails if they got stuff.
     let card = {
       number: this.refs.number.value,
       exp_month: this.refs.exp_month.value,
@@ -80,6 +81,39 @@ const PaymentForm = React.createClass({
         $.ajax(options);
       }
     })
+  },
+
+  handleSwag() {
+    console.log('made it to the handleSwag() function');
+    let swagOrdered = {
+      shirt: false,
+      sticker: false
+    }
+    if (this.refs.getSticker.checked) { swagOrdered.sticker = true; }
+    if (this.refs.getShirt.checked) {
+      swagOrdered.shirt = {
+        ordered: true,
+        size: this.refs.shirtSize.value
+      }
+    }
+    // if nothing is ordered return early.
+    console.log(swagOrdered);
+    if (!swagOrdered.shirt && !swagOrdered.sticker) { return; }
+    // otherwise get address and pass it on to server function.
+    swagOrdered.address = {
+      name: this.refs.name.value,
+      streetAddress: this.refs.address.value,
+      city: this.refs.city.value,
+      state: this.refs.state.value,
+      zip: this.refs.zip.value
+    };
+    let options = {
+      type: 'POST',
+      data: swagOrdered,
+      url: currentURL + '/order',
+      success: function () {console.log('success! Emails should be sent'); }
+    }
+    $.ajax(options);
   },
 
   validateForm() {
@@ -161,7 +195,7 @@ const PaymentForm = React.createClass({
             <span className="col-xs-10 col-form-label">Would you like to receive an Operation Spark T-Shirt?</span>
             <br />
             <span className="col-xs-3">Shirt Size</span>
-            <select name="shirtSize">
+            <select name="shirtSize" ref="shirtSize">
               <option value="small">S</option>
               <option value="medium">M</option>
               <option value="large">L</option>
