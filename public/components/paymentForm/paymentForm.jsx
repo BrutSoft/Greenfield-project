@@ -44,7 +44,7 @@ const PaymentForm = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault;
-    console.log('submit');
+    console.log('submit', this);
     //Stop function and throw error if there is a problem with the form.
     if (!this.validateForm()) {return;} //handle error if validateForm return false.
 
@@ -68,6 +68,8 @@ const PaymentForm = React.createClass({
     firebase.database().ref('donations/').push({
       user: user,
     });
+    // route to the thank you page
+    this.props.history.push('/thankyou');
 
   },
 
