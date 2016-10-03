@@ -36,6 +36,7 @@
     "nodemailer": "^2.6.4",
     "nodemailer-mailgun-transport": "^1.2.2",
     "react": "^15.3.2",
+    "react-cardstack": "^0.1.1",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1",
     "stripe": "^4.11.0",
