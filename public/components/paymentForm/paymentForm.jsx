@@ -140,14 +140,14 @@ const PaymentForm = React.createClass({
 
         <div className="form-group row">
           <div className="col-xs-1">
-            <input type="radio" value="signUpForEmailList" />
+            <input type="checkbox" value="signUpForEmailList" />
           </div>
             <span className="col-xs-10 col-form-label">Would you like to sign up for our newsletter?</span>
         </div>
         {this.state.showSticker ?
           <div className="form-group row">
             <div className="col-xs-1">
-              <input type="radio" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
+              <input type="checkbox" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
             </div>
             <span className="col-xs-10 col-form-label">Would you like to receive an Operation Spark sticker?</span>
           </div>
@@ -156,7 +156,7 @@ const PaymentForm = React.createClass({
         {this.state.showShirt ?
           <div className="form-group row">
             <div className="col-xs-1">
-              <input type="radio" value="getShirt" ref="getShirt" onChange={this.handleCheckBoxChange} />
+              <input type="checkbox" value="getShirt" ref="getShirt" onChange={this.handleCheckBoxChange} />
             </div>
             <span className="col-xs-10 col-form-label">Would you like to receive an Operation Spark T-Shirt?</span>
             <br />
