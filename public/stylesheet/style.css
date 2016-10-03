@@ -1,0 +1,37 @@
+body {
+  background: url("./hailey-bot1.png");
+}
+#payment-form {
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+  position: relative;
+  width: 450px;
+  height: 580px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+form {
+  padding-left: 5px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.checkbox {
+  margin-left: 5px
+}
+
+.submit {
+  border-radius: 5px;
+}
