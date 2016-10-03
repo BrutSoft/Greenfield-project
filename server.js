@@ -3,6 +3,20 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const stripe = require ('stripe')('sk_test_iVtKJqVJanL4FTCV5GbkFL5g');
 
+// Nodegun/Email setup ============================
+const nodemailer = require('nodemailer');
+const mg = require('nodemailer-mailgun-transport');
+const mgAPIkey = require('./mailgun.config.js');
+
+const mgAuth = {
+  api_key: mgAPIkey,
+  domain: 'sandbox4b6bb820be194dcba1386b97280458fc.mailgun.org'
+};
+
+const nodemailerMailgun = nodemailer.createTransport(mg(mgAuth));
+
+// ================================================
+
 const app = express();
 
 const PORT = process.env.PORT || '3000';
@@ -31,6 +45,9 @@ app.post('/payment', function (req, res) {
     }
   });
 });
+
+
+
 // Hey! Listen! Hey!
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
