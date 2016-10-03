@@ -9,6 +9,7 @@ import Logout from '../components/navbar/Logout';
 // import DonationPage from '../components/Donation-Page';
 import requireAuth from '../util/auth';
 import paymentForm from '../components/paymentForm/paymentForm';
+import ThankYou from '../components/ThankYou';
 
 const routes = (
   <Router history={hashHistory}>
@@ -18,6 +19,7 @@ const routes = (
       <Route path="logout" component={Logout} />
       <Route path="register" component={Register} />
       <Route path="donation-page" component={paymentForm} />
+      <Route path="thankyou" component={ThankYou} />
     </Route>
   </Router>
 );

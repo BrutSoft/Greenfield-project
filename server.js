@@ -83,7 +83,7 @@ app.post('/order', function (req, res) {
   Street Address: ' + swagOrdered.address.streetAddress + '\n\
   City: ' + swagOrdered.address.city + '\n\
   State: ' + swagOrdered.address.state +   '\n\
-  Zip Code' + swagOrdered.address.zip + '\n\
+  Zip Code: ' + swagOrdered.address.zip + '\n\
   \n\
   Thank you!';
 
