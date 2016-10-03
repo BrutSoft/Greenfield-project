@@ -11,3 +11,4 @@ dist/
 #CONFIG/Keys
 firebase.config.js
 mailgun.config.js
+stripe.config.js
