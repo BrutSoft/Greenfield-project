@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import firebase from 'firebase';
 
-const currentURL = 'https://donation-page-b130d.firebaseapp.com'
+const currentURL = 'http://127.0.0.1:3000'
 
 const PaymentForm = React.createClass({
 
@@ -61,12 +61,7 @@ const PaymentForm = React.createClass({
     this.handleStripe(card, this.refs.amount.value * 100);
 
     let user = {
-      name: this.refs.name.value,
       email: this.refs.email.value,
-      streetAddress: this.refs.address.value,
-      city: this.refs.city.value,
-      state: this.refs.state.value,
-      zip: this.refs.state.value,
       amount: this.refs.amount.value
     }
     console.log("USER ", user);
@@ -107,8 +102,8 @@ const PaymentForm = React.createClass({
       shirt: false,
       sticker: false
     }
-    if (this.refs.getSticker.checked) { swagOrdered.sticker = true; }
-    if (this.refs.getShirt.checked) {
+    if (this.refs.getSticker && this.refs.getSticker.checked) { swagOrdered.sticker = true; }
+    if (this.refs.getShirt && this.refs.getShirt.checked) {
       swagOrdered.shirt = {
         ordered: true,
         size: this.refs.shirtSize.value
