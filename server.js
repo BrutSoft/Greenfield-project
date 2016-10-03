@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const stripe = require ('stripe')('sk_test_iVtKJqVJanL4FTCV5GbkFL5g');
+const stripeKey = require('./stripe.config.js');
+const stripe = require ('stripe')(stripeKey);
 
 // Nodegun/Email setup ============================
 const nodemailer = require('nodemailer');
@@ -45,11 +46,13 @@ app.post('/payment', function (req, res) {
     } else {
       console.log('GREAT SUCCESS', charge);
       //Send Emails
+      var message = 'Hi Brutsoft, we just received a donation of $' +
+        charge.amount / 100;
       var emailOptions = {
         from: 'brutsoftNOLA@gmail.com',
         to: 'brutsoftNOLA@gmail.com',
         subject: 'Donation Received',
-        text: 'Hi Brutsoft, we just got a donation, thanks'
+        text: message
       };
       nodemailerMailgun.sendMail(emailOptions, function (err, info) {
         if (err) {console.error(err);}
