@@ -102,8 +102,8 @@ const PaymentForm = React.createClass({
       shirt: false,
       sticker: false
     }
-    if (this.refs.getSticker.checked) { swagOrdered.sticker = true; }
-    if (this.refs.getShirt.checked) {
+    if (this.refs.getSticker && this.refs.getSticker.checked) { swagOrdered.sticker = true; }
+    if (this.refs.getShirt && this.refs.getShirt.checked) {
       swagOrdered.shirt = {
         ordered: true,
         size: this.refs.shirtSize.value
