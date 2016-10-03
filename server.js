@@ -32,8 +32,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.post('/payment', function (req, res) {
-  console.log('hahaha made it here you butts!');
-  console.log(req.body);
   var charge = stripe.charges.create({
     amount: req.body.amount,
     currency: 'usd',
