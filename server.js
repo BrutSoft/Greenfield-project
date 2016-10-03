@@ -9,8 +9,10 @@ const mg = require('nodemailer-mailgun-transport');
 const mgAPIkey = require('./mailgun.config.js');
 
 const mgAuth = {
-  api_key: mgAPIkey,
-  domain: 'sandbox4b6bb820be194dcba1386b97280458fc.mailgun.org'
+  auth: {
+    api_key: mgAPIkey,
+    domain: 'sandbox4b6bb820be194dcba1386b97280458fc.mailgun.org'
+  }
 };
 
 const nodemailerMailgun = nodemailer.createTransport(mg(mgAuth));
@@ -42,6 +44,17 @@ app.post('/payment', function (req, res) {
       console.error(err);
     } else {
       console.log('GREAT SUCCESS', charge);
+      //Send Emails
+      var emailOptions = {
+        from: 'brutsoftNOLA@gmail.com',
+        to: 'brutsoftNOLA@gmail.com',
+        subject: 'Donation Received',
+        text: 'Hi Brutsoft, we just got a donation, thanks'
+      };
+      nodemailerMailgun.sendMail(emailOptions, function (err, info) {
+        if (err) {console.error(err);}
+        else {console.log('Email sent! ', info);}
+      });
     }
   });
 });
