@@ -61,12 +61,7 @@ const PaymentForm = React.createClass({
     this.handleStripe(card, this.refs.amount.value * 100);
 
     let user = {
-      name: this.refs.name.value,
       email: this.refs.email.value,
-      streetAddress: this.refs.address.value,
-      city: this.refs.city.value,
-      state: this.refs.state.value,
-      zip: this.refs.state.value,
       amount: this.refs.amount.value
     }
     console.log("USER ", user);
