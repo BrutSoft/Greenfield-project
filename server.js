@@ -32,8 +32,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.post('/payment', function (req, res) {
-  console.log('hahaha made it here you butts!');
-  console.log(req.body);
   var charge = stripe.charges.create({
     amount: req.body.amount,
     currency: 'usd',
@@ -64,7 +62,36 @@ app.post('/payment', function (req, res) {
   });
 });
 
+app.post('/order', function (req, res) {
+  var swagOrdered = req.body;
+  var emailOptions = {
+    from: 'brutsoftNOLA@gmail.com',
+    to: 'brutsoftNOLA@gmail.com'
+  };
+  var subject = swagOrdered.sticker ? 'Sticker' : '';
+  subject += swagOrdered.sticker && swagOrdered.shirt.ordered ? ' and ' : '';
+  subject += swagOrdered.shirt.ordered ? 'Shirt' : '';
+  emailOptions.subject = subject + ' ordered!';
 
+  emailOptions.text = ' \n\
+  Hello BrutSoft!\n\
+  \n\
+  You have received an order for ' + subject + ' \n\
+  \n\
+  The address for this person is:\n\
+  Name: ' + swagOrdered.address.name + '\n\
+  Street Address: ' + swagOrdered.address.streetAddress + '\n\
+  City: ' + swagOrdered.address.city + '\n\
+  State: ' + swagOrdered.address.state +   '\n\
+  Zip Code' + swagOrdered.address.zip + '\n\
+  \n\
+  Thank you!';
+
+  nodemailerMailgun.sendMail(emailOptions, function (err, info) {
+    if (err) {console.error(err);}
+    else {console.log('Swag email sent! ', info);}
+  });
+});
 
 // Hey! Listen! Hey!
 app.listen(PORT, () => {

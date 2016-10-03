@@ -2,7 +2,7 @@ body {
   background: url("./hailey-bot1.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #8A47C5;
+  background-size: 100%;
 }
 #payment-form {
   background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
