@@ -38,3 +38,36 @@ form {
 .submit {
   border-radius: 5px;
 }
+
+.tiers {
+  position: relative;;
+  text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+
+.tiers h1, h2 {
+  text-align: center;
+  color: black;
+}
+
+.tier-desc {
+  position: relative;;
+  text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
+  border-radius: 10px;
+  padding: 15px;
+  color: black;
+}
+
+.home-header {
+  position: relative;
+}
+
+.home-header h2, p {
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #EEEEEE;
+  text-align: left;
+}

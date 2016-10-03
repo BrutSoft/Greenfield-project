@@ -5,15 +5,17 @@ import tiers from './tierInfo.js'
 
 const Home = (props) => (
   <div>
-    <h2>Donate</h2>
-    <p>We depend on dedicated individuals and organizations to run our programs.
-      Check out below to see how your donations can help! </p>
-    <div>
+    <div className="home-header">
+      <h2>Donate</h2>
+      <p>We depend on dedicated individuals and organizations to run our programs.</p>
+      <p>Check out below to see how your donations can help! </p>
+    </div>
+    <div className="tiers">
       <CardStack
           height={480}
           width={450}
           background={"#8B51C5"}
-          hoverOffset={25}>
+          hoverOffset={15}>
 
           {tiers.map((tier, i) =>
             <Card
@@ -40,7 +42,8 @@ const TierInfo = React.createClass({
       <div>
         <h1>${this.props.tier.amount}</h1>
         <h2>{this.props.tier.name}</h2>
-        <p>{this.props.tier.description}</p>
+        <br /><br />
+        <p className="tier-desc">{this.props.tier.description}</p>
           <input type="button"
             className="submit btn btn-warning"
             value="Donate!"
