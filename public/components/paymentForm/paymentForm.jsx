@@ -89,69 +89,78 @@ const PaymentForm = React.createClass({
 
   render() {
     return (
+      <div id="donation-page-container" className="container">
       <form id="payment-form">
         <span className="payment-errors" />
 
-        <div className="form-row">
-          <label htmlFor>
-            <span>Donation Amount</span>
-            <input type="number" size="8" ref="amount" onChange={this.handleAmountChange} />
-          </label>
+        <div className="form-group row">
+          <label htmlFor="donationAmount" className="col-xs-5 col-form-label">Donation Amount</label>
+          <div className="col-xs-6">
+            <input type="number" className="form-control" ref="amount" min="1" max="2000" name="quantity" placeholder="$ 0" onChange={this.handleAmountChange} />
+          </div>
         </div>
 
-        <div className="form-row">
-          <label htmlFor>
-            <span>Card Number</span>
-            <input type="text" size="20" ref="number" />
-          </label>
+        <div className="form-group row">
+          <label htmlFor="cardNumber" className="col-xs-5 col-form-label">Card Number</label>
+          <div className="col-xs-6">
+            <input type="text" className="form-control" ref="number" placeholder="XXXX-XXXX-XXXX-XXXX" />
+          </div>
         </div>
 
-        <div className="form-row">
-          <label htmlFor>
-            <span>Expiration (MM/YY)</span>
-            <input type="text" size="2" ref="exp_month" />
-          </label>
-          <span> / </span>
-          <input type="text" size="2" ref="exp_year" />
+        <div className="form-group row">
+          <label htmlFor="expiration" className="col-xs-5 col-form-label">Expiration</label>
+          <div className="col-xs-3">
+            <input type="text" className="form-control" ref="exp_month" placeholder="Month" />
+          </div>
+          <div className="col-xs-3">
+            <input type="text" className="form-control" ref="exp_year" placeholder="Year" />
+          </div>
         </div>
 
-        <div className="form-row">
-          <label htmlFor>
-            <span>CVC</span>
-            <input type="text" size="4" data-stripe="cvc" />
-          </label>
+        <div className="form-group row">
+          <label htmlFor="cvc" className="col-xs-5 col-form-label">CVC</label>
+          <div className="col-xs-6">
+            <input type="text" className="form-control" placeholder="XXX" data-stripe="cvc" />
+          </div>
         </div>
 
-        <div className="form-row">
-          <label htmlFor>
-            <span>Billing Zip</span>
-            <input type="text" size="6" data-stripe="address_zip" />
-          </label>
+        <div className="form-group row">
+          <label htmlFor="billigZip" className="col-xs-5 col-form-label">Billing Zip</label>
+          <div className="col-xs-6">
+            <input type="text" className="form-control" placeholder="XXXXX" data-stripe="address_zip" />
+          </div>
         </div>
 
-        <div className="form-row">
-          <label htmlFor>
-            <span>Email Address</span>
-            <input type="text" size="30" />
-          </label>
+        <div className="form-group row">
+          <label htmlFor="email" className="col-xs-5 col-form-label">Email Address</label>
+            <div className="col-xs-6">
+              <input type="text" className="form-control" placeholder="example@email.com" ref="email"/>
+            </div>
         </div>
 
-        <div className="form-row">
-          <input type="checkbox" value="signUpForEmailList" />
-          <span>Would you like to sign up for our newsletter?</span>
+        <div className="form-group row">
+          <div className="col-xs-1">
+            <input type="radio" value="signUpForEmailList" />
+          </div>
+            <span className="col-xs-10 col-form-label">Would you like to sign up for our newsletter?</span>
         </div>
         {this.state.showSticker ?
-          <div className="form-row">
-            <input type="checkbox" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
-            <span>Would you like to receive an Operation Spark sticker?</span>
+          <div className="form-group row">
+            <div className="col-xs-1">
+              <input type="radio" value="getSticker" ref="getSticker" onChange={this.handleCheckBoxChange} />
+            </div>
+            <span className="col-xs-10 col-form-label">Would you like to receive an Operation Spark sticker?</span>
           </div>
         : null }
 
         {this.state.showShirt ?
-          <div className="form-row">
-            <input type="checkbox" value="getShirt" ref="getShirt" onChange={this.handleCheckBoxChange} />
-            <span>Would you like to receive an Operation Spark T-Shirt?</span>
+          <div className="form-group row">
+            <div className="col-xs-1">
+              <input type="radio" value="getShirt" ref="getShirt" onChange={this.handleCheckBoxChange} />
+            </div>
+            <span className="col-xs-10 col-form-label">Would you like to receive an Operation Spark T-Shirt?</span>
             <br />
+            <span className="col-xs-3">Shirt Size</span>
             <select name="shirtSize">
               <option value="small">S</option>
               <option value="medium">M</option>
@@ -159,46 +168,47 @@ const PaymentForm = React.createClass({
               <option value="xlarge">XL</option>
               <option value="xxlarge">XXL</option>
             </select>
-            <span>Shirt Size</span>
           </div>
         : null }
 
         {this.state.showAddressField ?
           <div className="shippingInfo">
-            <h3>Shipping Information</h3>
-            <div className="form-row">
-              <label htmlFor>
-                <span>Name</span>
-                <input type="text" size="30" id="name" />
-              </label>
+            <h4>Shipping Information</h4>
+            <div className="form-group row">
+              <label htmlFor="name" className="col-xs-5 col-form-label">Name</label>
+                <div className="col-xs-6">
+                <input type="text" className="form-control" id="name" ref="name" placeholder="Name Surname"/>
+              </div>
             </div>
-            <div className="form-row">
-              <label htmlFor>
-                <span>Street Address</span>
-                <input type="text" size="30" id="streetAddress" />
-              </label>
+            <div className="form-group row">
+              <label htmlFor="address" className="col-xs-5 col-form-label">Street Address</label>
+                <div className="col-xs-6">
+                <input type="text" className="form-control" id="streetAddress" ref="address" placeholder="Address" />
+              </div>
             </div>
-            <div className="form-row">
-              <label htmlFor>
-                <span>City/State</span>
-                <input type="text" size="20" id="city" />
-                <span> , </span>
-                <input type="text" size="2" id="state" />
-              </label>
+            <div className="form-group row">
+              <label htmlFor="city" className="col-xs-5 col-form-label">City</label>
+              <div className="col-xs-6">
+                <input type="text" className="form-control" id="city" ref="city" placeholder="City" />
+              </div>
             </div>
-            <div className="form-row">
-              <label htmlFor>
-                <span>Zip Code</span>
-                <input type="text" size="5" id="zip" />
-              </label>
+            <div className="form-group row">
+              <label htmlFor="stateZip" className="col-xs-5 col-form-label">State and Zip Code</label>
+              <div className="col-xs-3">
+                <input type="text" className="form-control" id="state" ref="state" placeholder="State" />
+              </div>
+              <div className="col-xs-3">
+                <input type="text" className="form-control" id="zip" ref="zip" placeholder="Zip Code" />
+              </div>
             </div>
           </div> : null }
         <input type="button"
-          className="submit"
+          className="submit btn btn-warning"
           value="Submit Payment"
           disabled={this.state.buttonDisabled}
           onClick={this.handleSubmit} />
       </form>
+      </div>
     );
   },
 });

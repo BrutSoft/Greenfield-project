@@ -30,7 +30,7 @@ const Login = React.createClass({
   render: function () {
     const errors = this.state.error ? <p> {this.state.error} </p> : '';
     return (
-      <div className="col-sm-6 col-sm-offset-3">
+      <div className="col-sm-6">
         <h1> Login </h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -42,7 +42,7 @@ const Login = React.createClass({
             <input ref="pw" type="password" className="form-control" placeholder="Password" />
           </div>
           {errors}
-          <button type="submit" className="btn btn-primary">Login</button>
+          <button type="submit" className="btn btn-warning">Login</button>
         </form>
       </div>
         );

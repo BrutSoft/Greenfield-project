@@ -26,7 +26,7 @@ const Register = React.createClass({
   render: function () {
     const errors = this.state.error ? <p> {this.state.error} </p> : '';
     return (
-      <div className="col-sm-6 col-sm-offset-3">
+      <div className="col-sm-6">
         <h1> Register </h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -38,7 +38,7 @@ const Register = React.createClass({
             <input ref="pw" type="password" className="form-control" placeholder="Password" />
           </div>
           {errors}
-          <button type="submit" className="btn btn-primary">Register</button>
+          <button type="submit" className="btn btn-warning">Register</button>
         </form>
       </div>
     );
