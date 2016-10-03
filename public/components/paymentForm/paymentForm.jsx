@@ -159,10 +159,10 @@ const PaymentForm = React.createClass({
         <div className="form-group row">
           <label htmlFor="expiration" className="col-xs-5 col-form-label">Expiration</label>
           <div className="col-xs-3">
-            <input type="text" className="form-control" ref="exp_month" maxLength="2" placeholder="Month" />
+            <input type="text" className="form-control" ref="exp_month" maxLength="2" placeholder="MM" />
           </div>
           <div className="col-xs-3">
-            <input type="text" className="form-control" ref="exp_year" maxLength="2" placeholder="Year" />
+            <input type="text" className="form-control" ref="exp_year" maxLength="2" placeholder="YY" />
           </div>
         </div>
 
