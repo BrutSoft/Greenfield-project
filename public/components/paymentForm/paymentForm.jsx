@@ -49,13 +49,10 @@ const PaymentForm = React.createClass({
     if (!this.validateForm()) {return;} //handle error if validateForm return false.
 
     //this.setState({buttonDisabled: true}); //disables button so multiple charges
-<<<<<<< HEAD
                                            // cannot be accidentally created
     this.handleSwag(); // Send emails if they got stuff.
-=======
                                             // cannot be accidentally create
 
->>>>>>> database is now collecting donation information
     let card = {
       number: this.refs.number.value,
       exp_month: this.refs.exp_month.value,
